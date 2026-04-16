@@ -16,7 +16,7 @@ const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 //   }
 //   return res.json();
 // }
-
+console.log("API_BASE:", API_BASE);
 async function apiCall(endpoint, options = {}) {
   const url = `${API_BASE}${endpoint}`;
   console.log("CALLING:", url); // 👈 IMPORTANT
