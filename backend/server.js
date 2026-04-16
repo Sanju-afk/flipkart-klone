@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5000;
 // In production, set FRONTEND_URL to your Vercel frontend URL
 // e.g. FRONTEND_URL=https://flipkart-clone-xyz.vercel.app
 app.use(cors({
-  origin: process.env.FRONTEND_URL || '*',
+  origin: true,
   credentials: true,
 }));
 app.use(express.json());
