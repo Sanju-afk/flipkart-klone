@@ -1,20 +1,32 @@
 const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
+// async function apiCall(endpoint, options = {}) {
+//   const url = `${API_BASE}${endpoint}`;
+//   const config = {
+//     headers: { 'Content-Type': 'application/json' },
+//     ...options,
+//   };
+//   if (config.body && typeof config.body === 'object') {
+//     config.body = JSON.stringify(config.body);
+//   }
+//   const res = await fetch(url, config);
+//   if (!res.ok) {
+//     const err = await res.json().catch(() => ({ error: 'Request failed' }));
+//     throw new Error(err.error || 'Request failed');
+//   }
+//   return res.json();
+// }
+
 async function apiCall(endpoint, options = {}) {
   const url = `${API_BASE}${endpoint}`;
-  const config = {
-    headers: { 'Content-Type': 'application/json' },
-    ...options,
-  };
-  if (config.body && typeof config.body === 'object') {
-    config.body = JSON.stringify(config.body);
-  }
-  const res = await fetch(url, config);
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({ error: 'Request failed' }));
-    throw new Error(err.error || 'Request failed');
-  }
-  return res.json();
+  console.log("CALLING:", url); // 👈 IMPORTANT
+
+  const res = await fetch(url, options);
+
+  const text = await res.text(); // 👈 read raw response
+  console.log("RAW RESPONSE:", text); // 👈 THIS WILL EXPOSE EVERYTHING
+
+  return JSON.parse(text); // will crash here (expected)
 }
 
 export const api = {
