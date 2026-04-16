@@ -1,0 +1,13 @@
+node_modules/
+.env
+.env.local
+.env.production
+.env.development
+*.log
+.DS_Store
+build/
+dist/
+flipkart.db
+flipkart.db-journal
+flipkart.db-shm
+flipkart.db-wal
