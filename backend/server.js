@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 5000;
 
 // ✅ 1. CORS FIRST
 app.use(cors({
-  origin: true,
+  origin: process.env.FRONTEND_URL || true,
   credentials: true,
 }));
 
