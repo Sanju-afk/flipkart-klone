@@ -10,19 +10,14 @@ const PORT = process.env.PORT || 5000;
 // In production, set FRONTEND_URL to your Vercel frontend URL
 // e.g. FRONTEND_URL=https://flipkart-clone-xyz.vercel.app
 
-
-// ✅ MUST be FIRST middleware
+// ✅ 1. CORS FIRST
 app.use(cors({
   origin: true,
   credentials: true,
 }));
 
-// manual fallback (VERY IMPORTANT)
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*"); // or your frontend URL
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+// ✅ 2. JSON parser
+app.use(express.json());
 
 // ─── Lazy schema init ───
 // Runs once on first request. Idempotent — CREATE TABLE IF NOT EXISTS never drops data.
