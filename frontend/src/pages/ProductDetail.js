@@ -25,6 +25,7 @@ function ProductDetail() {
 
   const handleAddToCart = async () => {
     if (!product) return;
+    console.log(product.id);
     const ok = await addToCart(product.id);
     if (ok) showToast('Added to cart!', 'success');
     else showToast('Failed to add to cart', 'error');
