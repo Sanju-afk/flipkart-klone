@@ -24,8 +24,8 @@ function ProductDetail() {
   const formatPrice = (price) => '₹' + Number(price).toLocaleString('en-IN');
 
   const handleAddToCart = async () => {
-    if (!product) return;
     console.log(product.id);
+    if (!product) return;
     const ok = await addToCart(product.id);
     if (ok) showToast('Added to cart!', 'success');
     else showToast('Failed to add to cart', 'error');
